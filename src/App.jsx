@@ -15,9 +15,9 @@ const App = () => {
 
     mm.add("(min-width: 768px)", () => {
       gsap.from("#logo", {
-        x: () => window.innerWidth *0.45 ,
-        y: ()=> window.innerWidth *0.2,
-        scale: ()=>window.innerWidth / 200,
+        x: () => window.innerWidth * 0.45,
+        y: () => window.innerHeight * 0.45,
+        scale: () => window.innerWidth / 200,
         scrollTrigger: {
           trigger: "#logo",
           scrub: 2,
@@ -26,8 +26,9 @@ const App = () => {
       });
 
       gsap.from("#title", {
-        y: ()=> window.innerWidth *0.36,
-        x: () => window.innerWidth * -0 ,
+        x: () => window.innerWidth * 0,
+        y: () => window.innerHeight * 0.8,
+        scale: () => window.innerWidth / 1150,
         scrollTrigger: {
           trigger: "#logo",
           scrub: 2,
@@ -35,23 +36,24 @@ const App = () => {
         },
       });
     });
-    
+
     mm.add("(max-width: 767px)", () => {
       gsap.from("#logo", {
-        x: () => window.innerWidth *0.45 ,
-        y: ()=> window.innerWidth *0.40,
-        scale: ()=>window.innerWidth / 70,
+        x: () => window.innerWidth * 0.4,
+        y: () => window.innerHeight * 0.4,
+        scale: () => window.innerWidth / 70,
         scrollTrigger: {
           trigger: "#logo",
           scrub: 1,
           start: "center 40%",
-          markers :true
+          // markers: true,
         },
       });
 
       gsap.from("#title", {
-        x: () => window.innerWidth *0,
-        y: ()=> window.innerWidth *0.74,
+        x: () => window.innerWidth * 0,
+        y: () => window.innerHeight * 0.7,
+        scale: () => window.innerWidth / 300,
         scrollTrigger: {
           trigger: "#logo",
           scrub: 2,
@@ -105,13 +107,15 @@ const App = () => {
             md:static md:max-h-none md:opacity-100
           `}
         >
-          <div className="
+          <div
+            className="
             flex flex-col md:flex-row
             md:items-center md:justify-evenly
             gap-6 md:gap-10
             mt-6 md:mt-0
             text-lg font-bold px-4 md:px-0 pb-4 md:pb-0
-          ">
+          "
+          >
             {/* LEFT NAV */}
             <ul className="flex flex-col md:flex-row gap-6 md:gap-8">
               {navLeft.map((nav, i) => (
