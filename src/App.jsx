@@ -15,9 +15,9 @@ const App = () => {
 
     mm.add("(min-width: 768px)", () => {
       gsap.from("#logo", {
-        x: 600,
-        y: 300,
-        scale: 8,
+        x: () => window.innerWidth *0.45 ,
+        y: ()=> window.innerWidth *0.2,
+        scale: ()=>window.innerWidth / 200,
         scrollTrigger: {
           trigger: "#logo",
           scrub: 2,
@@ -26,8 +26,8 @@ const App = () => {
       });
 
       gsap.from("#title", {
-        y: 550,
-        x: -15,
+        y: ()=> window.innerWidth *0.36,
+        x: () => window.innerWidth * -0 ,
         scrollTrigger: {
           trigger: "#logo",
           scrub: 2,
@@ -35,22 +35,23 @@ const App = () => {
         },
       });
     });
-
+    
     mm.add("(max-width: 767px)", () => {
       gsap.from("#logo", {
-        scale: 10,
-        xPercent: 400,
-        yPercent: 800,
+        x: () => window.innerWidth *0.45 ,
+        y: ()=> window.innerWidth *0.40,
+        scale: ()=>window.innerWidth / 70,
         scrollTrigger: {
           trigger: "#logo",
-          scrub: 3,
+          scrub: 1,
           start: "center 40%",
+          markers :true
         },
       });
 
       gsap.from("#title", {
-        yPercent: 850,
-        xPercent: -15,
+        x: () => window.innerWidth *0,
+        y: ()=> window.innerWidth *0.74,
         scrollTrigger: {
           trigger: "#logo",
           scrub: 2,
