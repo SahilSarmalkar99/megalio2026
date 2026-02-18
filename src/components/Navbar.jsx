@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
-import logo from "../assets/images/logo.webp"
+import logo from "../assets/images/logo.webp";
 import title from "../assets/title/Title.png";
 import { NavLink, useLocation } from "react-router-dom";
-
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,73 +20,71 @@ const navRoutes = {
   "Contact Us": "/contactUs",
 };
 
-
 const Navbar = () => {
-
   const location = useLocation();
   const isHome = location.pathname === "/";
 
 useGSAP(() => {
   if (!isHome) {
-    // Kill all triggers when leaving home
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    // Kill only navbar triggers
+    ScrollTrigger.getAll().forEach((t) => {
+      if (t.trigger?.id === "logo") t.kill();
+    });
+
     gsap.set(["#logo", "#title"], { clearProps: "all" });
     return;
   }
 
   const ctx = gsap.context(() => {
-    const mm = gsap.matchMedia();
 
-    mm.add("(min-width: 768px)", () => {
-      gsap.from("#logo", {
-        x: () => window.innerWidth * 0.45,
-        y: () => window.innerHeight * 0.45,
-        scale: () => window.innerWidth / 200,
-        scrollTrigger: {
-          trigger: "#logo",
-          scrub: 2,
-          start: "center 50%",
-        },
-      });
+    // 🔥 1️⃣ Reset transforms
+    gsap.set(["#logo", "#title"], { clearProps: "all" });
 
-      gsap.from("#title", {
-        y: () => window.innerHeight * 0.8,
-        scale: () => window.innerWidth / 1150,
-        scrollTrigger: {
-          trigger: "#logo",
-          scrub: 2,
-          start: "center 50%",
-        },
-      });
+    // 🔥 2️⃣ Scroll to top FIRST
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
     });
 
-    mm.add("(max-width: 767px)", () => {
-      gsap.from("#logo", {
-        x: () => window.innerWidth * 0.4,
-        y: () => window.innerHeight * 0.4,
-        scale: () => window.innerWidth / 70,
-        scrollTrigger: {
-          trigger: "#logo",
-          scrub: 1,
-          start: "center 40%",
-        },
+    // 🔥 3️⃣ Delay trigger creation slightly
+    setTimeout(() => {
+
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 768px)", () => {
+
+        gsap.from("#logo", {
+          x: window.innerWidth * 0.45,
+          y: window.innerHeight * 0.45,
+          scale: window.innerWidth / 200,
+          scrollTrigger: {
+            id: "logo", // important
+            trigger: "#logo",
+            start: "center 50%",
+            scrub: 2,
+          },
+        });
+
+        gsap.from("#title", {
+          y: window.innerHeight * 0.8,
+          scale: window.innerWidth / 1150,
+          scrollTrigger: {
+            trigger: "#logo",
+            start: "center 50%",
+            scrub: 2,
+          },
+        });
+
       });
 
-      gsap.from("#title", {
-        y: () => window.innerHeight * 0.7,
-        scale: () => window.innerWidth / 300,
-        scrollTrigger: {
-          trigger: "#logo",
-          scrub: 2,
-          start: "center 40%",
-        },
-      });
-    });
+    }, 50); // small delay is key
+
   });
 
-  return () => ctx.revert(); // 🧹 cleanup on route change
+  return () => ctx.revert();
 
 }, [isHome]);
+
 
 
   const [open, setOpen] = useState(false);
@@ -107,7 +104,7 @@ useGSAP(() => {
             id="title"
             className="justify-self-center flex flex-col items-center text-red-600 font-bold"
           >
-            <img src={title} alt="" srcset="" className="h-15 md:h-20"/>
+            <img src={title} alt="" srcset="" className="h-15 md:h-20" />
           </div>
 
           {/* TOGGLE */}
@@ -140,7 +137,11 @@ useGSAP(() => {
             {/* LEFT NAV */}
             <ul className="flex flex-col md:flex-row gap-6 md:gap-8">
               {navLeft.map((nav, i) => (
-                <NavLink key={i} to={navRoutes[nav]} className="hover:text-white cursor-pointer">
+                <NavLink
+                  key={i}
+                  to={navRoutes[nav]}
+                  className="hover:text-white cursor-pointer"
+                >
                   {nav}
                 </NavLink>
               ))}
@@ -149,7 +150,11 @@ useGSAP(() => {
             {/* RIGHT NAV */}
             <ul className="flex flex-col md:flex-row gap-6 md:gap-8">
               {navRight.map((nav, i) => (
-                <NavLink key={i} to={navRoutes[nav]} className="hover:text-white cursor-pointer">
+                <NavLink
+                  key={i}
+                  to={navRoutes[nav]}
+                  className="hover:text-white cursor-pointer"
+                >
                   {nav}
                 </NavLink>
               ))}
@@ -158,7 +163,7 @@ useGSAP(() => {
         </div>
       </nav>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

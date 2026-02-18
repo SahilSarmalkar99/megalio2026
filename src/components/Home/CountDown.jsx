@@ -35,7 +35,7 @@ const Countdown = () => {
     return () => clearInterval(interval);
   }, []);
 
-  useReveal(".reveal")
+  // useReveal(".reveal")
 
   return (
     <section className="reveal relative py-20 bg-black text-center text-red-500">
