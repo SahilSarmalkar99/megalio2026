@@ -10,7 +10,7 @@ import Event from "./pages/Event";
 import { useSmoothScroll } from "./hook/useSmoothScroll";
 
 const App = () => {
-  // useSmoothScroll()
+  useSmoothScroll()
   return (
     <Routes>
       <Route element={<MainLayout />}>
