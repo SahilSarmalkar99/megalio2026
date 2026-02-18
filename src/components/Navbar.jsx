@@ -27,8 +27,15 @@ const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
-   useGSAP(() => {
-    if (!isHome) return;
+useGSAP(() => {
+  if (!isHome) {
+    // Kill all triggers when leaving home
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    gsap.set(["#logo", "#title"], { clearProps: "all" });
+    return;
+  }
+
+  const ctx = gsap.context(() => {
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 768px)", () => {
@@ -44,7 +51,6 @@ const Navbar = () => {
       });
 
       gsap.from("#title", {
-        x: () => window.innerWidth * 0,
         y: () => window.innerHeight * 0.8,
         scale: () => window.innerWidth / 1150,
         scrollTrigger: {
@@ -68,7 +74,6 @@ const Navbar = () => {
       });
 
       gsap.from("#title", {
-        x: () => window.innerWidth * 0,
         y: () => window.innerHeight * 0.7,
         scale: () => window.innerWidth / 300,
         scrollTrigger: {
@@ -78,13 +83,18 @@ const Navbar = () => {
         },
       });
     });
-  }, []);
+  });
+
+  return () => ctx.revert(); // 🧹 cleanup on route change
+
+}, [isHome]);
+
 
   const [open, setOpen] = useState(false);
 
   return (
     <div>
-      <nav className="sticky top-0 z-50 bg-black text-gray-400 px-4 md:px-10 py-0 ">
+      <nav className="fixed w-full top-0 z-50 bg-black text-gray-400 px-4 md:px-10 py-0 ">
         {/* TOP ROW — FIXED LAYOUT */}
         <div className="grid grid-cols-3 items-center">
           {/* LOGO */}
