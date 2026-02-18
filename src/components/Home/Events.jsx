@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 import { eventImages } from "../../data/EventImages";
 import { useNavigate } from "react-router-dom";
+import { useReveal } from "../../hook/reveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -94,9 +95,11 @@ export default function EventsGallery() {
     splitImages.push(columnImages);
   }
 
+  useReveal(".reveal")
+
   return (
     <section ref={sectionRef} className="py-32 bg-black">
-      <div className="max-w-[1400px] mx-auto px-6">
+      <div className="reveal max-w-[1400px] mx-auto px-6">
 
         <div className="frame relative h-[600px] overflow-hidden rounded-3xl bg-[#111] p-6 isolate">
 

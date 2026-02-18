@@ -67,7 +67,7 @@ export const useReveal = (selector, options = {}) => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: el,
-            start: options.start || "top 70%",
+            start: options.start || "top 75%",
             toggleActions: "play none none reverse",
           },
         }
