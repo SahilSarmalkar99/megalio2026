@@ -7,8 +7,10 @@ import { Schedule } from "./pages/Schedule";
 import Team from "./pages/Team";
 import ContactUs from "./pages/ContactUs";
 import Event from "./pages/Event";
+import { useSmoothScroll } from "./hook/useSmoothScroll";
 
 const App = () => {
+  // useSmoothScroll()
   return (
     <Routes>
       <Route element={<MainLayout />}>
