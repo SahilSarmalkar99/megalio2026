@@ -26,65 +26,79 @@ const Navbar = () => {
 
 useGSAP(() => {
   if (!isHome) {
-    // Kill only navbar triggers
-    ScrollTrigger.getAll().forEach((t) => {
-      if (t.trigger?.id === "logo") t.kill();
-    });
-
+    ScrollTrigger.getAll().forEach((t) => t.kill());
     gsap.set(["#logo", "#title"], { clearProps: "all" });
     return;
   }
 
   const ctx = gsap.context(() => {
 
-    // 🔥 1️⃣ Reset transforms
+    // 🔥 Reset elements BEFORE animation
     gsap.set(["#logo", "#title"], { clearProps: "all" });
 
-    // 🔥 2️⃣ Scroll to top FIRST
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
+    // 🔥 Force scroll to top correctly
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      ScrollTrigger.refresh();
     });
 
-    // 🔥 3️⃣ Delay trigger creation slightly
-    setTimeout(() => {
+    const mm = gsap.matchMedia();
 
-      const mm = gsap.matchMedia();
-
-      mm.add("(min-width: 768px)", () => {
-
-        gsap.from("#logo", {
-          x: window.innerWidth * 0.45,
-          y: window.innerHeight * 0.45,
-          scale: window.innerWidth / 200,
-          scrollTrigger: {
-            id: "logo", // important
-            trigger: "#logo",
-            start: "center 50%",
-            scrub: 2,
-          },
-        });
-
-        gsap.from("#title", {
-          y: window.innerHeight * 0.8,
-          scale: window.innerWidth / 1150,
-          scrollTrigger: {
-            trigger: "#logo",
-            start: "center 50%",
-            scrub: 2,
-          },
-        });
-
+    mm.add("(min-width: 768px)", () => {
+      gsap.from("#logo", {
+        x: window.innerWidth * 0.45,
+        y: window.innerHeight * 0.45,
+        scale: window.innerWidth / 200,
+        scrollTrigger: {
+          trigger: "#logo",
+          start: "center 50%",
+          scrub: 2,
+          invalidateOnRefresh: true,
+        },
       });
 
-    }, 50); // small delay is key
+      gsap.from("#title", {
+        y: window.innerHeight * 0.8,
+        scale: window.innerWidth / 1150,
+        scrollTrigger: {
+          trigger: "#logo",
+          start: "center 50%",
+          scrub: 2,
+          invalidateOnRefresh: true,
+        },
+      });
+    });
+
+    mm.add("(max-width: 767px)", () => {
+      gsap.from("#logo", {
+        x: window.innerWidth * 0.4,
+        y: window.innerHeight * 0.4,
+        scale: window.innerWidth / 70,
+        scrollTrigger: {
+          trigger: "#logo",
+          start: "center 40%",
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      gsap.from("#title", {
+        y: window.innerHeight * 0.7,
+        scale: window.innerWidth / 300,
+        scrollTrigger: {
+          trigger: "#logo",
+          start: "center 40%",
+          scrub: 2,
+          invalidateOnRefresh: true,
+        },
+      });
+    });
 
   });
 
   return () => ctx.revert();
 
 }, [isHome]);
-
 
 
   const [open, setOpen] = useState(false);
