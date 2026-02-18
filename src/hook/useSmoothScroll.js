@@ -23,11 +23,14 @@ export const useSmoothScroll = () => {
     // Sync ScrollTrigger with Lenis
     lenis.on("scroll", ScrollTrigger.update);
 
+    // 🚀 DO NOT use old scroll.instance.scroll
     ScrollTrigger.scrollerProxy(document.body, {
       scrollTop(value) {
-        return arguments.length
-          ? lenis.scrollTo(value)
-          : lenis.scroll.instance.scroll;
+        if (arguments.length) {
+          lenis.scrollTo(value, { immediate: true });
+        } else {
+          return window.scrollY;
+        }
       },
       getBoundingClientRect() {
         return {
@@ -39,11 +42,11 @@ export const useSmoothScroll = () => {
       },
     });
 
+    ScrollTrigger.addEventListener("refresh", () => lenis.resize());
     ScrollTrigger.refresh();
 
     return () => {
       lenis.destroy();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 };
