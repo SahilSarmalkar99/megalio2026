@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
@@ -102,6 +102,10 @@ useGSAP(() => {
 
 
   const [open, setOpen] = useState(false);
+
+useEffect(() => {
+  setOpen(false);
+}, [location.pathname]);
 
   return (
     <div>
