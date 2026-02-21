@@ -4,6 +4,7 @@ import Video from '../components/Home/Video'
 import Hero from '../components/Home/Hero'
 import Countdown from '../components/Home/CountDown'
 import EventsGallery from '../components/Home/Events'
+import Footer from '../components/Footer'
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Hero />
       <Countdown />
       <EventsGallery />
+      <Footer />
     </div>
   )
 }
