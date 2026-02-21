@@ -107,12 +107,12 @@ const StickyCards = () => {
   return (
     <section
       ref={sectionRef}
-      className="sticky-cards relative w-full h-[100svh] bg-black overflow-hidden perspective-[850px]"
+      className="sticky-cards relative w-full h-[100svh] bg-black  overflow-hidden perspective-[850px]"
     >
       {teamData.map((member, index) => (
         <div
           key={member.id}
-          className="card absolute top-1/2 left-1/2 w-[65%] h-[60%]
+          className="card absolute  top-1/2 left-1/2 w-[65%] h-[60%]
           flex gap-6 p-10 rounded-2xl
           bg-gradient-to-br from-red-900 via-black to-red-950
           shadow-[0_0_40px_rgba(255,0,0,0.4)]
