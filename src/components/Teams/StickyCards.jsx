@@ -107,7 +107,7 @@ const StickyCards = () => {
   return (
     <section
       ref={sectionRef}
-      className="sticky-cards relative w-full h-[100svh] bg-black  overflow-hidden perspective-[850px]"
+      className="sticky-cards mt-[10px] md:mt-[50px] relative w-full h-[100svh] bg-black  overflow-hidden perspective-[850px]"
     >
       {teamData.map((member, index) => (
         <div

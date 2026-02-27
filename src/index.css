@@ -25,6 +25,7 @@ body{
   height: 60%;
   transform-origin: center bottom;
   will-change: transform;
+  /* margin-top:50px ; */
 }
 
 .card .col {
