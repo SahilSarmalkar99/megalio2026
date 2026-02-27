@@ -19,13 +19,12 @@ body{
 
 .sticky-cards .card {
   position: absolute;
-  top: 50%;
+  top: 57%;
   left: 50%;
   width: 65%;
   height: 60%;
   transform-origin: center bottom;
   will-change: transform;
-  /* margin-top:50px ; */
 }
 
 .card .col {
