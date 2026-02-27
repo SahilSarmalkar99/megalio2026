@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-
 export const useSmoothScroll = () => {
   useEffect(() => {
     const lenis = new Lenis({
@@ -13,6 +12,9 @@ export const useSmoothScroll = () => {
       smoothTouch: false,
     });
 
+    // 👇 expose globally so other components can access it
+    window.lenis = lenis;
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -20,10 +22,8 @@ export const useSmoothScroll = () => {
 
     requestAnimationFrame(raf);
 
-    // Sync ScrollTrigger with Lenis
     lenis.on("scroll", ScrollTrigger.update);
 
-    // 🚀 DO NOT use old scroll.instance.scroll
     ScrollTrigger.scrollerProxy(document.body, {
       scrollTop(value) {
         if (arguments.length) {
@@ -47,6 +47,7 @@ export const useSmoothScroll = () => {
 
     return () => {
       lenis.destroy();
+      window.lenis = null;
     };
   }, []);
 };

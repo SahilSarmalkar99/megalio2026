@@ -51,57 +51,54 @@ const StickyCards = () => {
     // SCROLLTRIGGER
     // =========================
     const trigger = ScrollTrigger.create({
-      trigger: section,
-      start: "top top",
-      end: `+=${window.innerHeight * 8}`,
-      pin: true,
-      scrub: 1,
-      onUpdate: (self) => {
-        const progress = self.progress;
+  trigger: section,
+  start: "top top",
+  end: `+=${window.innerHeight * 8}`,
+  pin: true,
+  scrub: 1,
+  onUpdate: (self) => {
+    const progress = self.progress;
 
-        const activeCard = Math.min(
-          Math.floor(progress / segmentSize),
-          totalCards - 1
-        );
+    const activeCard = Math.min(
+      Math.floor(progress / segmentSize),
+      totalCards - 1
+    );
 
-        const segProgress =
-          (progress - activeCard * segmentSize) / segmentSize;
+    const segProgress =
+      (progress - activeCard * segmentSize) / segmentSize;
 
-        cards.forEach((card, i) => {
-          if (i < activeCard) {
-            gsap.set(card, {
-              yPercent: -250,
-              rotationX: 35,
-            });
-          } else if (i === activeCard) {
-            gsap.set(card, {
-              yPercent: gsap.utils.interpolate(-50, -200, segProgress),
-              rotationX: gsap.utils.interpolate(0, 35, segProgress),
-              scale: 1,
-            });
-          } else {
-            const behindIndex = i - activeCard;
-            const currentYOffset =
-              (behindIndex - segProgress) * cardOffset;
-
-            const currentScale =
-              1 - (behindIndex - segProgress) * cardScaleStep;
-
-            gsap.set(card, {
-              yPercent: -50 + currentYOffset,
-              rotationX: 0,
-              scale: currentScale,
-            });
-          }
+    cards.forEach((card, i) => {
+      if (i < activeCard) {
+        gsap.set(card, {
+          yPercent: -250,
+          rotationX: 35,
         });
-      },
-    });
+      } else if (i === activeCard) {
+        gsap.set(card, {
+          yPercent: gsap.utils.interpolate(-50, -200, segProgress),
+          rotationX: gsap.utils.interpolate(0, 35, segProgress),
+          scale: 1,
+        });
+      } else {
+        const behindIndex = i - activeCard;
+        const currentYOffset =
+          (behindIndex - segProgress) * cardOffset;
 
+        const currentScale =
+          1 - (behindIndex - segProgress) * cardScaleStep;
+
+        gsap.set(card, {
+          yPercent: -50 + currentYOffset,
+          rotationX: 0,
+          scale: currentScale,
+        });
+      }
+    });
+  },
+});
     return () => {
-      trigger.kill();
-      lenis.destroy();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
+  trigger.kill();
+};
   }, []);
 
   return (

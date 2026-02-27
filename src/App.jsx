@@ -1,17 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import MainLayout from "./layouts/MainLayout";
-import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Schedule } from "./pages/Schedule";
 import Team from "./pages/Team";
 import ContactUs from "./pages/ContactUs";
 import Event from "./pages/Event";
 import { useSmoothScroll } from "./hook/useSmoothScroll";
+import ScrollToTop from "./hook/ScrollToTop";
 
 const App = () => {
-  useSmoothScroll()
+
+  // Disable browser scroll restoration
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
+
+  // Initialize Lenis
+  useSmoothScroll();
+
   return (
+    <>
+    <ScrollToTop />
     <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
@@ -21,7 +33,8 @@ const App = () => {
         <Route path="/ContactUs" element={<ContactUs />} />
       </Route>
     </Routes>
+    </>
   );
 };
 
-export default App;
+export default App;   

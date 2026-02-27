@@ -25,22 +25,24 @@ const Navbar = () => {
   const isHome = location.pathname === "/";
 
 useGSAP(() => {
+ ScrollTrigger.getAll().forEach((t) => t.kill());
+  gsap.killTweensOf(["#logo", "#title"]);
+  gsap.set(["#logo", "#title"], { clearProps: "all" });
+
   if (!isHome) {
-    ScrollTrigger.getAll().forEach((t) => t.kill());
-    gsap.set(["#logo", "#title"], { clearProps: "all" });
     return;
   }
 
+
+
   const ctx = gsap.context(() => {
 
-    // 🔥 Reset elements BEFORE animation
-    gsap.set(["#logo", "#title"], { clearProps: "all" });
-
-    // 🔥 Force scroll to top correctly
-    requestAnimationFrame(() => {
-      window.scrollTo(0, 0);
-      ScrollTrigger.refresh();
-    });
+   requestAnimationFrame(() => {
+  if (window.lenis) {
+    window.lenis.scrollTo(0, { immediate: true });
+  }
+  ScrollTrigger.refresh();
+});
 
     const mm = gsap.matchMedia();
 
