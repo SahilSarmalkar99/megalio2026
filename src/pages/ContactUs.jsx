@@ -1,9 +1,11 @@
 import React from 'react'
+import SpookyContactPoster from '../components/ContactUs/Contact'
 
 const ContactUs = () => {
   return (
-    <div><div className="bg-zinc-800 w-full h-screen"></div>
-      <div className="bg-white w-full h-screen"></div></div>
+    <div>
+      <SpookyContactPoster />
+    </div>
   )
 }
 
