@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { timelineData } from "../../data/eventsData";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ScheduleBg from "../../assets/display/schedule.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,6 +34,15 @@ const Timeline = () => {
       ref={sectionRef}
       className="relative py-24 md:py-30 bg-black text-white overflow-hidden"
     >
+      <div
+        className="absolute inset-0 z-0 opacity-50 grayscale-25 bg-gradient-to-b from-[#3a0000] via-[#0a0000] to-black"
+        style={{
+          backgroundImage: `url(${ScheduleBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
       <div className="max-w-6xl mx-auto px-6">
         {timelineData.map((dayBlock, index) => (
           <div key={index} className="mb-24">
@@ -62,7 +72,7 @@ const Timeline = () => {
   ${i % 2 === 0 ? "md:justify-end md:pr-10" : "md:justify-start md:pl-10"}
   justify-center mb-4 md:mb-0`}
 >
-  <span className="text-2xl font-mono text-red-500 tracking-wider">
+  <span className="text-2xl font-bold text-red-500 tracking-wider">
     [{event.time}]
   </span>
 </div>

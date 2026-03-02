@@ -1,43 +1,70 @@
+import img1 from "../assets/team/dev.jpeg";
+import img2 from "../assets/team/gracy.jpeg";
+import img3 from "../assets/team/meghana.PNG";
+import img4 from "../assets/team/sharvil.jpeg";
+import img5 from "../assets/team/devank.jpeg";
+import img6 from "../assets/team/harshita.png";
+
 const teamData = [
   {
     id: 1,
     role: "President",
-    name: "Eleven",
+    name: "Mr. Dev Sarkar",
     description:
-      "Leads the team with fearless decisions and supernatural focus. Always ready to step into the Upside Down for the mission.",
+      "Provides strategic leadership and oversees all organizational activities. Ensures the team works towards its vision with clarity, discipline, and innovation.",
     image:
-      "https://imgs.search.brave.com/vdSHiuSYGT4j1eE8cJgLhClCa4QhcDVp8Xg_p-qg8h8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLmdl/dHR5d2FsbHBhcGVy/cy5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMjEvMDEvQ29v/bC1BbmltZS1XYWxs/cGFwZXItRm9yLUNv/bXB1dGVyLmpwZw",
-    linkedin: "#",
+      img1,
+    linkedin: "https://www.linkedin.com/in/dev-sarkar-7926ab315?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
   },
   {
     id: 2,
     role: "Vice President",
-    name: "Mike Wheeler",
+    name: "Ms. Gracy Yadav",
     description:
-      "Strategic thinker and trusted second-in-command. Keeps the squad united when chaos hits Hawkins.",
+      "Supports the President in strategic planning and decision-making. Coordinates team efforts and ensures smooth execution of projects and events.",
     image:
-      "https://images.alphacoders.com/806/806758.jpg",
-    linkedin: "#",
+      img2,
+    linkedin: "https://www.linkedin.com/in/gracy-yadav-969b31259?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   },
   {
     id: 3,
-    role: "Secretary",
-    name: "Dustin ",
+    role: "General Secretary",
+    name: "Ms. Meghana Kamath",
     description:
-      "Master communicator and tech enthusiast. Tracks every mission detail with precision.",
+      "Manages official communications, documentation, and meeting records. Ensures effective coordination between all departments and members.",
     image:
-      "https://images.alphacoders.com/807/807056.jpg",
-    linkedin: "#",
+      img3,
+    linkedin: "https://www.linkedin.com/in/meghana-kamath-a71344321?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
   },
   {
     id: 4,
-    role: "Treasurer",
-    name: "Lucas Sinclair",
+    role: "Joint Secretary",
+    name: "Mr. Sharvil Patil",
     description:
-      "Handles resources and tactical planning. Ensures every mission is fully equipped.",
+      "Assists the General Secretary in administrative tasks and internal coordination. Helps streamline operations and maintain organizational efficiency.",
     image:
-      "https://images.alphacoders.com/807/807048.jpg",
+      img4,
     linkedin: "#",
+  },
+  {
+    id: 5,
+    role: "Treasurer",
+    name: "Mr. Devank Mhatre",
+    description:
+      "Oversees financial planning, budgeting, and fund management. Ensures transparent and responsible handling of organizational finances.",
+    image:
+      img5,
+    linkedin: "https://www.linkedin.com/in/devank-mhatre-1b8751264?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+  },
+  {
+    id: 6,
+    role: "Advisor",
+    name: "Ms. Harshita Gharat",
+    description:
+      "Provides guidance, mentorship, and strategic insights to the team. Supports decision-making with experience and expert advice.",
+    image:
+      img6,
+    linkedin: "https://www.linkedin.com/in/harshita-gharat-baa347321?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
   },
 ];
 

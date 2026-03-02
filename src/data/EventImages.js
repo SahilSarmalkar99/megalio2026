@@ -1,13 +1,35 @@
-import img1 from "../assets/events/e1.jpg"
-import img2 from "../assets/events/e2.jpg"
-import img3 from "../assets/events/e3.jpg"
-import img4 from "../assets/events/e4.jpg"
-import img5 from "../assets/events/e5.jpg"
-import img6 from "../assets/events/e6.jpg"
-import img7 from "../assets/events/e7.jpg"
-import img8 from "../assets/events/e8.jpg"
+import ai from "../assets/events/aibased.PNG";
+import arm from "../assets/events/arm.PNG";
+import bgmi from "../assets/events/bgmi.PNG";
+import blindC from "../assets/events/blind_c.PNG";
+import bridge from "../assets/events/bridge.PNG";
+import drone from "../assets/events/drone.PNG";
+import efootball from "../assets/events/efootball.PNG";
+import idea2Impact from "../assets/events/i2m.PNG";
+import junkyard from "../assets/events/junkyard.PNG";
+import line from "../assets/events/line.PNG";
+import maze from "../assets/events/maze.PNG";
+import power from "../assets/events/power.PNG";
+import presentation from "../assets/events/presentation.PNG";
+import quiz from "../assets/events/quiz.PNG";
+import soccer from "../assets/events/socoor.PNG";
 
 
 export const eventImages = [
-  img1 ,img2 , img3 ,img4 , img5 , img5 ,img6 ,img7 , img8 ,img2 ,img4 , img6 
+  idea2Impact,   
+  line,          
+  bridge,        
+  soccer,         
+  maze,          
+  presentation,  
+  junkyard,      
+  drone,         
+  blindC,        
+  quiz,          
+  bgmi,          
+  efootball,     
+  power,         
+  arm,           
+  ai,
+  ai             
 ];

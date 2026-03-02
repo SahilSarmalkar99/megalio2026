@@ -127,7 +127,7 @@ const StickyCards = () => {
               </h1>
             </div>
 
-            <p className="text-gray-300 text-sm leading-relaxed">
+            <p className="text-gray-300 text-sm hidden md:block leading-relaxed">
               {member.description}
             </p>
 

@@ -1,34 +1,119 @@
 export const timelineData = [
   {
     day: "Day 1",
-    date: "Oct 31, 2026",
+    date: "March 13, 2026",
     events: [
       {
-        time: "09:00 AM",
-        title: "Arcade High Score Challenge",
-        location: "The Palace Arcade",
+        time: "11:30 AM",
+        title: "Megahack",
+        location: "Main Arena",
       },
       {
-        time: "10:30 AM",
-        title: "Hawkins Lab Tour",
-        location: "National Laboratory",
+        time: "11:30 AM",
+        title: "BGMI",
+        location: "Gaming Zone",
       },
       {
-        time: "12:00 PM",
-        title: "Upside Down Breach",
-        location: "Restricted Zone",
+        time: "11:30 AM",
+        title: "E Football",
+        location: "Gaming Zone",
+      },
+      {
+        time: "11:30 AM",
+        title: "Robo Soccer",
+        location: "Robotics Arena",
+      },
+      {
+        time: "11:30 AM",
+        title: "Idea2Impact",
+        location: "Seminar Hall",
+      },
+      {
+        time: "02:00 PM",
+        title: "BPP",
+        location: "Conference Hall",
+      },
+      {
+        time: "02:00 PM",
+        title: "Tech Quiz",
+        location: "Auditorium",
+      },
+      {
+        time: "11:30 AM",
+        title: "Bridge IT",
+        location: "IT Lab",
+      },
+      {
+        time: "01:00 PM",
+        title: "Arm Wrestling",
+        location: "Sports Area",
+      },
+      {
+        time: "01:00 PM",
+        title: "Powerlifting",
+        location: "Sports Arena",
+      },
+      {
+        time: "11:30 AM",
+        title: "GDG Workshop",
+        location: "Workshop Room",
         highlight: true,
       },
     ],
   },
   {
     day: "Day 2",
-    date: "Nov 01, 2026",
+    date: "March 14, 2026",
     events: [
       {
-        time: "02:00 PM",
-        title: "D&D Campaign Finale",
-        location: "Mike's Basement",
+        time: "11:00 AM",
+        title: "Drone Dexterity",
+        location: "Outdoor Arena",
+      },
+      {
+        time: "11:30 AM",
+        title: "Bridge IT Continue",
+        location: "IT Lab",
+      },
+      {
+        time: "01:00 PM",
+        title: "Civil Junkyard",
+        location: "Engineering Block",
+      },
+      {
+        time: "11:30 AM",
+        title: "AI Project Presentation",
+        location: "Seminar Hall",
+      },
+      {
+        time: "11:30 AM",
+        title: "Blind C",
+        location: "Coding Lab",
+      },
+      {
+        time: "11:00 PM",
+        title: "Line Follower",
+        location: "Robotics Arena",
+      },
+      {
+        time: "11:30 AM",
+        title: "BGMI Continue",
+        location: "Gaming Zone",
+      },
+      {
+        time: "11:30 AM",
+        title: "E Football Continue",
+        location: "Gaming Zone",
+      },
+      {
+        time: "11:00 PM",
+        title: "Robomaze",
+        location: "Robotics Arena",
+      },
+      {
+        time: "11:30 AM",
+        title: "Idea2Impact Continue",
+        location: "Seminar Hall",
       },
     ],
   },
