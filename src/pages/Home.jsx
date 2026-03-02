@@ -4,6 +4,7 @@ import Video from '../components/Home/Video'
 import Hero from '../components/Home/Hero'
 import Countdown from '../components/Home/CountDown'
 import EventsGallery from '../components/Home/Events'
+import ImageCarousel from '../components/Home/highlights'
 import Footer from '../components/Footer'
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <Hero />
       <Countdown />
       <EventsGallery />
+      <ImageCarousel /> {/* Carousel above the footer */}
       <Footer />
     </div>
   )
