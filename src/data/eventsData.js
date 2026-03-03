@@ -117,4 +117,55 @@ export const timelineData = [
       },
     ],
   },
+  {
+    day: "Day 3",
+    date: "March 15, 2026",
+    events: [
+      {
+        time: "10:00 AM",
+        title: "Megahack Finals",
+        location: "Main Arena",
+        highlight: true,
+      },
+      {
+        time: "10:30 AM",
+        title: "Robomaze Finals",
+        location: "Robotics Arena",
+      },
+      {
+        time: "11:00 AM",
+        title: "BGMI Finals",
+        location: "Gaming Zone",
+        highlight: true,
+      },
+      {
+        time: "11:00 AM",
+        title: "E Football Finals",
+        location: "Gaming Zone",
+      },
+      {
+        time: "12:00 PM",
+        title: "Idea2Impact Finals",
+        location: "Seminar Hall",
+        highlight: true,
+      },
+      {
+        time: "01:00 PM",
+        title: "AI Project Finals",
+        location: "Seminar Hall",
+      },
+      {
+        time: "02:00 PM",
+        title: "Prize Distribution",
+        location: "Main Auditorium",
+        highlight: true,
+      },
+      {
+        time: "03:30 PM",
+        title: "Closing Ceremony",
+        location: "Main Stage",
+        highlight: true,
+      },
+    ],
+  },
 ];

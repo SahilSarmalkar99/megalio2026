@@ -36,41 +36,82 @@ const Countdown = () => {
 
   return (
     <section
-      className="relative py-24 text-center text-red-500 bg-cover bg-center"
+      className="relative py-24 text-center bg-cover bg-center overflow-hidden"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-xs"></div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/55" />
+      {/* Bottom fade into surrounding sections */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent, #050505)" }} />
+      <div className="absolute top-0 left-0 right-0 h-24 pointer-events-none"
+        style={{ background: "linear-gradient(to top, transparent, #050505)" }} />
 
-      {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 px-6">
+        {/* thin top separator */}
+        <div className="mx-auto mb-8 w-24 h-px" style={{ background: "linear-gradient(to right, transparent, rgba(180,20,20,0.6), transparent)" }} />
 
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-4 tracking-widest">
-          COUNTDOWN TO MEGALEIO 2026
+        <h1
+          className="font-extrabold mb-3 tracking-[0.22em] uppercase"
+          style={{
+            fontFamily: "'Cinzel', serif",
+            fontSize: "clamp(1.3rem, 4vw, 3rem)",
+            color: "#c8181e",
+            textShadow: "0 0 40px rgba(180,0,20,0.4)",
+          }}
+        >
+          Countdown to Megaleio 2026
         </h1>
 
-        <p className="mb-10 text-lg text-red-300">
-          GET READY FOR THE ULTIMATE TECH FEST!
+        <p className="mb-12 tracking-[0.3em] uppercase" style={{ fontSize: "0.68rem", color: "rgba(200,140,140,0.55)", fontFamily: "'Courier New', monospace" }}>
+          Get ready for the ultimate tech fest
         </p>
 
-        <div className="flex justify-center gap-6 flex-wrap">
-
+        <div className="flex justify-center gap-3 md:gap-6 flex-wrap">
           {["days", "hours", "minutes", "seconds"].map((unit, index) => (
-            <div
-              key={index}
-              className="bg-black/60 border-4 border-red-500 rounded-xl px-8 py-6 shadow-[0_0_25px_rgba(255,0,0,0.8)] min-w-[120px] backdrop-blur-md"
-            >
-              <div className="text-4xl font-bold">
+            <div key={index} style={{
+              position: "relative",
+              background: "rgba(6,2,2,0.82)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              border: "1px solid rgba(140,20,20,0.28)",
+              borderTop: "1px solid rgba(200,30,30,0.45)",
+              padding: "18px 28px 16px",
+              minWidth: "96px",
+            }}>
+              {/* top accent line */}
+              <div style={{
+                position: "absolute", top: 0, left: 0, right: 0, height: "2px",
+                background: "linear-gradient(to right, transparent, rgba(200,20,30,0.6), transparent)",
+              }} />
+              <div
+                style={{
+                  fontFamily: "'Cinzel', serif",
+                  fontSize: "clamp(1.8rem, 5vw, 2.8rem)",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  color: "#e8e8e8",
+                  lineHeight: 1,
+                  textShadow: "0 0 18px rgba(220,20,40,0.25)",
+                }}
+              >
                 {String(timeLeft[unit]).padStart(2, "0")}
               </div>
-              <div className="text-sm mt-2 uppercase tracking-wider">
+              <div style={{
+                marginTop: "8px",
+                fontFamily: "'Courier New', monospace",
+                fontSize: "0.55rem",
+                letterSpacing: "0.35em",
+                textTransform: "uppercase",
+                color: "rgba(180,80,80,0.5)",
+              }}>
                 {unit}
               </div>
             </div>
           ))}
-
         </div>
 
+        <div className="mx-auto mt-8 w-24 h-px" style={{ background: "linear-gradient(to right, transparent, rgba(180,20,20,0.6), transparent)" }} />
       </div>
     </section>
   );
