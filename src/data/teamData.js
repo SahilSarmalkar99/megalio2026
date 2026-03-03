@@ -3,7 +3,7 @@ import img2 from "../assets/team/gracy.jpeg";
 import img3 from "../assets/team/meghana.PNG";
 import img4 from "../assets/team/sharvil.jpeg";
 import img5 from "../assets/team/devank.jpeg";
-import img6 from "../assets/team/harshita.png";
+import img6 from "../assets/team/harshita.PNG";
 
 const teamData = [
   {
