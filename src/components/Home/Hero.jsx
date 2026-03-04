@@ -1,16 +1,19 @@
 ﻿import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import fogVideo   from "../../assets/vecteezy_dark-forest-and-castle-in-misty-foggy-day_1627233.mov";
+import fogVideo from "../../assets/vecteezy_dark-forest-and-castle-in-misty-foggy-day_1627233.mov";
 import stormVideo from "../../assets/vecteezy_storm-during-night-in-the-forest_1625786.mov";
-import vecna      from "../../assets/vecna_tsp.png";
+import vecna from "../../assets/vecna_tsp.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 /* ── letter splitter ── */
 const splitText = (text) =>
   text.split("").map((char, i) => (
-    <span key={`${char}-${i}`} className="letter inline-block will-change-transform">
+    <span
+      key={`${char}-${i}`}
+      className="letter inline-block will-change-transform"
+    >
       {char === " " ? "\u00A0" : char}
     </span>
   ));
@@ -18,37 +21,36 @@ const splitText = (text) =>
 /* ── 10 dust particles (seeded) ── */
 const PARTICLES = Array.from({ length: 10 }, (_, i) => {
   const s1 = (i * 137.508) % 1;
-  const s2 = (i * 97.3)   % 1;
-  const s3 = (i * 53.7)   % 1;
+  const s2 = (i * 97.3) % 1;
+  const s3 = (i * 53.7) % 1;
   return {
-    id:       i,
-    left:     `${(s1 * 90 + 5).toFixed(2)}%`,
-    bottom:   `${(s2 * 50).toFixed(2)}%`,
-    size:     (s3 * 2 + 1).toFixed(2),
+    id: i,
+    left: `${(s1 * 90 + 5).toFixed(2)}%`,
+    bottom: `${(s2 * 50).toFixed(2)}%`,
+    size: (s3 * 2 + 1).toFixed(2),
     duration: (s1 * 12 + 10).toFixed(2),
-    delay:    (s2 * 8).toFixed(2),
-    opacity:  (s3 * 0.18 + 0.06).toFixed(2),
+    delay: (s2 * 8).toFixed(2),
+    opacity: (s3 * 0.18 + 0.06).toFixed(2),
   };
 });
 
 const Hero = () => {
-  const sectionRef   = useRef(null);
-  const bgRef        = useRef(null);   // fog video wrapper (parallax)
-  const stormRef     = useRef(null);   // storm video element
-  const fogRef       = useRef(null);
+  const sectionRef = useRef(null);
+  const bgRef = useRef(null); // fog video wrapper (parallax)
+  const stormRef = useRef(null); // storm video element
+  const fogRef = useRef(null);
   const lightningRef = useRef(null);
-  const shadowRef    = useRef(null);
-  const tearRef      = useRef(null);
-  const line1Ref     = useRef(null);
-  const line2Ref     = useRef(null);
-  const cardRef      = useRef(null);
-  const btnRef       = useRef(null);
-  const vecnaRef     = useRef(null);
+  const shadowRef = useRef(null);
+  const tearRef = useRef(null);
+  const line1Ref = useRef(null);
+  const line2Ref = useRef(null);
+  const cardRef = useRef(null);
+  const btnRef = useRef(null);
+  const vecnaRef = useRef(null);
   const particlesRef = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-
       /* ── 1. Scroll parallax bg ── */
       gsap.to(bgRef.current, {
         yPercent: -16,
@@ -66,23 +68,40 @@ const Hero = () => {
 
       /* ── 2. Single slow fog drift ── */
       gsap.to(fogRef.current, {
-        x: "-8%", duration: 28, repeat: -1, yoyo: true, ease: "sine.inOut",
+        x: "-8%",
+        duration: 28,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
       });
 
       /* ── 3. Heading letter stagger ── */
       gsap.from(line1Ref.current.querySelectorAll(".letter"), {
-        opacity: 0, y: 50, rotateX: -40,
-        stagger: 0.05, duration: 1.2, ease: "power4.out", delay: 0.4,
+        opacity: 0,
+        y: 50,
+        rotateX: -40,
+        stagger: 0.05,
+        duration: 1.2,
+        ease: "power4.out",
+        delay: 0.4,
       });
       gsap.from(line2Ref.current.querySelectorAll(".letter"), {
-        opacity: 0, y: 50, rotateX: -40,
-        stagger: 0.05, duration: 1.2, ease: "power4.out", delay: 0.8,
+        opacity: 0,
+        y: 50,
+        rotateX: -40,
+        stagger: 0.05,
+        duration: 1.2,
+        ease: "power4.out",
+        delay: 0.8,
       });
 
       /* ── 4. Card reveal ── */
       gsap.from(cardRef.current, {
-        opacity: 0, y: 30,
-        duration: 1.0, ease: "power3.out", delay: 1.5,
+        opacity: 0,
+        y: 30,
+        duration: 1.0,
+        ease: "power3.out",
+        delay: 1.5,
       });
 
       /* ── 4b. Vecna rises from below — cinematic entrance ── */
@@ -97,35 +116,54 @@ const Hero = () => {
       /* ── 5. Heading glow breathe (very subtle) ── */
       gsap.to(line1Ref.current, {
         textShadow: "0 0 40px rgba(220,20,60,0.45)",
-        duration: 3, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 1.8,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 1.8,
       });
 
       /* ── 6. Random lightning flicker ── */
       const doLightning = () => {
         const tl = gsap.timeline({
-          onComplete: () => gsap.delayedCall(Math.random() * 12 + 6, doLightning),
+          onComplete: () =>
+            gsap.delayedCall(Math.random() * 12 + 6, doLightning),
         });
         tl.to(lightningRef.current, { opacity: 0.055, duration: 0.04 })
-          .to(lightningRef.current, { opacity: 0,     duration: 0.08 })
+          .to(lightningRef.current, { opacity: 0, duration: 0.08 })
           .to(lightningRef.current, { opacity: 0.035, duration: 0.04 })
-          .to(lightningRef.current, { opacity: 0,     duration: 0.14 });
+          .to(lightningRef.current, { opacity: 0, duration: 0.14 });
       };
       gsap.delayedCall(4, doLightning);
 
       /* ── 7. Shadow silhouette — psychological tension ── */
       const doShadow = () => {
-        gsap.timeline({
-          onComplete: () => gsap.delayedCall(Math.random() * 20 + 20, doShadow),
-        })
-          .to(shadowRef.current, { opacity: 0.07, duration: 1.2, ease: "power2.in" })
-          .to(shadowRef.current, { opacity: 0,    duration: 1.8, ease: "power2.out", delay: 0.8 });
+        gsap
+          .timeline({
+            onComplete: () =>
+              gsap.delayedCall(Math.random() * 20 + 20, doShadow),
+          })
+          .to(shadowRef.current, {
+            opacity: 0.07,
+            duration: 1.2,
+            ease: "power2.in",
+          })
+          .to(shadowRef.current, {
+            opacity: 0,
+            duration: 1.8,
+            ease: "power2.out",
+            delay: 0.8,
+          });
       };
       gsap.delayedCall(8, doShadow);
 
       /* ── 8. Dimension tear breathe ── */
       gsap.to(tearRef.current, {
         filter: "blur(1.5px) brightness(1.3)",
-        duration: 4, repeat: -1, yoyo: true, ease: "sine.inOut",
+        duration: 4,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
       });
 
       /* ── 9. Dust particles ── */
@@ -142,22 +180,33 @@ const Hero = () => {
             repeat: -1,
             ease: "none",
             repeatDelay: Math.random() * 6 + 2,
-          }
+          },
         );
       });
-
     }, sectionRef);
 
     /* ── 10. Mouse parallax (desktop only) ── */
     const onMouseMove = (e) => {
       if (window.innerWidth < 768) return;
-      const cx = window.innerWidth  / 2;
+      const cx = window.innerWidth / 2;
       const cy = window.innerHeight / 2;
       const dx = (e.clientX - cx) / cx;
       const dy = (e.clientY - cy) / cy;
       // bg video wrapper moves slowest, fog haze moves more — creates Z-depth
-      gsap.to(bgRef.current,  { x: dx * -7,  y: dy * -4,  duration: 2.0, ease: "power2.out", overwrite: "auto" });
-      gsap.to(fogRef.current, { x: dx * -13, y: dy * -7,  duration: 2.4, ease: "power2.out", overwrite: "auto" });
+      gsap.to(bgRef.current, {
+        x: dx * -7,
+        y: dy * -4,
+        duration: 2.0,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+      gsap.to(fogRef.current, {
+        x: dx * -13,
+        y: dy * -7,
+        duration: 2.4,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
     };
     window.addEventListener("mousemove", onMouseMove);
 
@@ -233,7 +282,6 @@ const Hero = () => {
         className="relative w-full overflow-hidden flex items-center"
         style={{ minHeight: "100svh", background: "#050505" }}
       >
-
         {/* ░ L1 · Dark forest fog VIDEO — main background ░ */}
         <div
           ref={bgRef}
@@ -241,7 +289,10 @@ const Hero = () => {
           style={{ inset: "-10%", willChange: "transform" }}
         >
           <video
-            autoPlay muted loop playsInline
+            autoPlay
+            muted
+            loop
+            playsInline
             style={{
               width: "100%",
               height: "100%",
@@ -260,7 +311,10 @@ const Hero = () => {
         >
           <video
             ref={stormRef}
-            autoPlay muted loop playsInline
+            autoPlay
+            muted
+            loop
+            playsInline
             style={{
               width: "100%",
               height: "100%",
@@ -382,11 +436,18 @@ const Hero = () => {
         <div
           ref={lightningRef}
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "rgba(220,20,60,1)", opacity: 0, mixBlendMode: "screen" }}
+          style={{
+            background: "rgba(220,20,60,1)",
+            opacity: 0,
+            mixBlendMode: "screen",
+          }}
         />
 
         {/* ░ L9 · Scanline ░ */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 3 }}>
+        <div
+          className="absolute inset-0 pointer-events-none overflow-hidden"
+          style={{ zIndex: 3 }}
+        >
           <div
             className="hero-scan"
             style={{
@@ -400,7 +461,10 @@ const Hero = () => {
         </div>
 
         {/* ░ L10 · Dust particles ░ */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 3 }}>
+        <div
+          className="absolute inset-0 pointer-events-none overflow-hidden"
+          style={{ zIndex: 3 }}
+        >
           {PARTICLES.map((p) => (
             <div
               key={p.id}
@@ -410,9 +474,9 @@ const Hero = () => {
               data-opacity={p.opacity}
               className="absolute rounded-full"
               style={{
-                left:   p.left,
+                left: p.left,
                 bottom: p.bottom,
-                width:  `${p.size}px`,
+                width: `${p.size}px`,
                 height: `${p.size}px`,
                 background: `rgba(200,180,160,${p.opacity})`,
                 boxShadow: `0 0 ${parseFloat(p.size) * 3}px rgba(200,160,140,0.3)`,
@@ -426,7 +490,8 @@ const Hero = () => {
           className="absolute bottom-0 left-0 right-0 pointer-events-none"
           style={{
             height: "220px",
-            background: "linear-gradient(to bottom, transparent 0%, #050505 100%)",
+            background:
+              "linear-gradient(to bottom, transparent 0%, #050505 100%)",
             zIndex: 4,
           }}
         />
@@ -453,14 +518,17 @@ const Hero = () => {
           />
         </div>
 
-
-
         {/* ░ L12.6 · SVG Tentacle connections ░ */}
         <svg
           className="tentacle-svg absolute inset-0 pointer-events-none hidden md:block"
           viewBox="0 0 100 100"
           preserveAspectRatio="none"
-          style={{ zIndex: 6, width: "100%", height: "100%", overflow: "visible" }}
+          style={{
+            zIndex: 6,
+            width: "100%",
+            height: "100%",
+            overflow: "visible",
+          }}
         >
           {/* Main thick tentacle — bubble right edge → Vecna face */}
           <path
@@ -507,91 +575,145 @@ const Hero = () => {
         >
           {/* ── text block — top on mobile, centered-left on desktop ── */}
           <div className="flex-1 md:absolute md:inset-0 md:flex md:items-center">
-          <div className="w-full max-w-7xl mx-auto px-6 md:px-20 pt-28 pb-6 md:py-0">
-            <div className="md:max-w-[52%]">
-
-              {/* scene label */}
-              <div style={{ marginBottom: "20px", display: "flex", alignItems: "center", gap: "12px" }}>
-                <div style={{ width: "32px", height: "1px", background: "rgba(200,20,30,0.45)" }} />
-                <span style={{
-                  fontFamily: "'Courier New', monospace",
-                  fontSize: "0.58rem",
-                  letterSpacing: "0.38em",
-                  textTransform: "uppercase",
-                  color: "rgba(180,60,60,0.6)",
-                }}>Megaleio&nbsp;·&nbsp;2026</span>
-              </div>
-
-              {/* Heading */}
-              <h1
-                className="leading-none select-none"
-                style={{
-                  fontFamily: "'Cinzel', serif",
-                  fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
-                  fontWeight: 700,
-                  letterSpacing: "5px",
-                  marginBottom: "36px",
-                }}
-              >
-                <span ref={line1Ref} className="block" style={{ color: "#DC143C", textShadow: "0 0 60px rgba(220,20,60,0.25)" }}>
-                  {splitText("ENTER THE")}
-                </span>
-                <span ref={line2Ref} className="block mt-1" style={{ color: "#f0f0f0", textShadow: "0 2px 40px rgba(0,0,0,0.98)" }}>
-                  {splitText("UNKNOWN")}
-                </span>
-              </h1>
-
-              {/* ── cinematic description ── */}
-              <div ref={cardRef} className="speak-bubble" style={{ position: "relative", paddingLeft: "20px" }}>
-
-                {/* left accent bar — the only visual connector */}
+            <div className="w-full max-w-7xl mx-auto px-6 md:px-20 pt-28 pb-6 md:py-0">
+              <div className="md:max-w-[52%]">
+                {/* scene label */}
                 <div
-                  className="accent-bar"
                   style={{
-                    position: "absolute",
-                    left: 0,
-                    top: "4px",
-                    bottom: "4px",
-                    width: "2px",
-                    background: "linear-gradient(to bottom, rgba(220,20,60,0.7), rgba(180,10,20,0.2))",
-                  }}
-                />
-
-                <p
-                  className="leading-loose"
-                  style={{
-                    fontFamily: "'Cinzel', serif",
-                    fontSize: "clamp(0.78rem, 1.15vw, 0.95rem)",
-                    color: "rgba(210,190,190,0.75)",
-                    letterSpacing: "0.06em",
-                    margin: 0,
-                    textShadow: "0 1px 12px rgba(0,0,0,0.9)",
+                    marginBottom: "20px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "12px",
                   }}
                 >
-                  A national-level immersive experience where mystery
-                  meets innovation. Step beyond reality &mdash; explore
-                  hidden dimensions, and uncover secrets that blur the
-                  line between science and the supernatural.
-                </p>
-              </div>
+                  <div
+                    style={{
+                      width: "32px",
+                      height: "1px",
+                      background: "rgba(200,20,30,0.45)",
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontFamily: "'Courier New', monospace",
+                      fontSize: "1rem",
+                      letterSpacing: "0.3em",
+                      textTransform: "uppercase",
+                      fontWeight: "bolder",
+                      color: "rgba(180,60,60,0.6)",
+                    }}
+                  >
+                    Megaleio&nbsp;·&nbsp;2026
+                  </span>
+                </div>
 
-              {/* ── date ── */}
-              <div style={{ marginTop: "32px", display: "flex", alignItems: "center", gap: "12px" }}>
-                <div style={{ width: "20px", height: "1px", background: "rgba(180,20,20,0.45)" }} />
-                <span style={{
-                  fontFamily: "'Courier New', monospace",
-                  fontSize: "0.55rem",
-                  letterSpacing: "0.3em",
-                  textTransform: "uppercase",
-                  color: "rgba(160,60,60,0.5)",
-                }}>
-                  March&nbsp;13–15,&nbsp;2026
-                </span>
-              </div>
+                {/* Heading */}
+                <h1
+                  className="leading-none select-none"
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
+                    fontWeight: 700,
+                    letterSpacing: "5px",
+                    marginBottom: "36px",
+                  }}
+                >
+                  <span
+                    ref={line1Ref}
+                    className="block"
+                    style={{
+                      width: "100%",
+                      color: "#DC143C",
+                      textShadow: "0 0 60px rgba(220,20,60,0.25)",
+                    }}
+                  >
+                    {splitText("ENTER")}
+                    <br />
+                    {splitText("THE")}
+                  </span>
+                  <span
+                    ref={line2Ref}
+                    className="block mt-1"
+                    style={{
+                      color: "#f0f0f0",
+                      textShadow: "0 2px 40px rgba(0,0,0,0.98)",
+                    }}
+                  >
+                    {splitText("UNKNOWN")}
+                  </span>
+                </h1>
 
+                {/* ── cinematic description ── */}
+                <div
+                  ref={cardRef}
+                  className="speak-bubble"
+                  style={{ position: "relative", paddingLeft: "20px" }}
+                >
+                  {/* left accent bar — the only visual connector */}
+                  <div
+                    className="accent-bar"
+                    style={{
+                      position: "absolute",
+                      left: 0,
+                      top: "4px",
+                      bottom: "4px",
+                      width: "2px",
+                      background:
+                        "linear-gradient(to bottom, rgba(220,20,60,0.7), rgba(180,10,20,0.2))",
+                    }}
+                  />
+
+                  <p
+                    className="leading-loose"
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      fontSize: "clamp(0.78rem, 1.15vw, 1rem)",
+                      color: "rgba(210,190,190,0.75)",
+                      letterSpacing: "0.06em",
+                      margin: 0,
+                      textShadow: "0 1px 12px rgba(0,0,0,0.9)",
+                    }}
+                  >
+                    A national-level immersive experience where mystery meets
+                    innovation. Step beyond reality &mdash; explore hidden
+                    dimensions, and uncover secrets that blur the line between
+                    science and the supernatural.
+                  </p>
+                </div>
+
+                {/* ── date ── */}
+                <div
+                  style={{
+                    marginTop: "32px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "12px",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "full",
+                      height: "1px",
+                      background: "rgba(180,20,20,0.45)",
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontFamily: "'Courier New', monospace",
+                      fontSize: "1rem",
+                      letterSpacing: "0.3em",
+                      fontWeight: "bolder",
+                      textTransform: "uppercase",
+                      color: "rgba(160,60,60,0.5)",
+                    }}
+                  >
+                    March&nbsp;13–15,&nbsp;2026
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
-          </div>{/* end text block */}
+          {/* end text block */}
 
           {/* ── Vecna — mobile in-flow bottom block ── */}
           <div
@@ -620,9 +742,7 @@ const Hero = () => {
               }}
             />
           </div>
-
         </div>
-
       </section>
     </>
   );

@@ -10,6 +10,7 @@ const EventsGrid = () => {
 
   const [search, setSearch] = useState("");
   const [activeEvent, setActiveEvent] = useState(null);
+  const [activeCard, setActiveCard] = useState(null);
 
   const filteredEvents = eventsGridData.filter((event) =>
     event.title.toLowerCase().includes(search.toLowerCase()),
@@ -254,10 +255,10 @@ const EventsGrid = () => {
               <article
                 key={index}
                 onClick={() => openSpotlight(event)}
-                className="event-stagger magnetic-card event-card-hover group relative h-[290px] overflow-hidden border border-red-500/20 bg-black/60 cursor-pointer transition-all duration-400 hover:-translate-y-1 hover:border-red-400/45"
+                className="event-stagger magnetic-card event-card-hover group relative h-[365px] overflow-hidden border border-red-500/20 bg-black/60 cursor-pointer transition-all duration-400 hover:-translate-y-1 hover:border-red-400/45"
               >
                 <div className="tilt-layer">
-                  <img src={event.image} alt={event.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={event.image} alt={event.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-95" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                   <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 bg-[linear-gradient(120deg,transparent_0%,rgba(255,255,255,0.08)_48%,transparent_100%)]" />
                   <div className="relative z-10 h-full flex items-end p-4">
@@ -298,14 +299,14 @@ const EventsGrid = () => {
               <div
                 key={index}
                 onClick={() => openSpotlight(event)}
-                className="reveal event-stagger magnetic-card event-card-hover relative group overflow-hidden border border-red-500/25 w-full max-w-[380px] mx-auto cursor-pointer transition-all duration-400 hover:-translate-y-1 hover:border-red-400/50"
+                className="reveal event-stagger magnetic-card event-card-hover relative group overflow-hidden border border-red-500/25 w-full max-w-[380px] mx-auto cursor-pointer transition-all duration-400 hover:-translate-y-1 hover:border-red-400/50 rounded-2xl"
               >
                 <div className="relative h-[500px]">
                   <div className="tilt-layer">
                     <img
                       src={event.image}
                       alt={event.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-100"
                     />
                     <div className="absolute inset-0 bg-black/70 group-hover:bg-black/62 transition-colors duration-300" />
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(circle_at_20%_20%,rgba(220,20,60,0.22),transparent_42%)]" />
@@ -330,13 +331,13 @@ const EventsGrid = () => {
                         >
                           REGISTER NOW
                         </a>
-                        <a
+                        {/* <a
                           href={event.detailsLink}
                           onClick={(e) => e.stopPropagation()}
                           className="w-full py-3 text-sm font-bold tracking-[0.14em] bg-black/70 text-yellow-300 border border-yellow-400/45 hover:bg-black/55 transition"
                         >
                           VIEW DETAILS
-                        </a>
+                        </a> */}
                       </div>
                     </div>
                   </div>

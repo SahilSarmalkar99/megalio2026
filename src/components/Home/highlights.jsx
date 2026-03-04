@@ -9,12 +9,13 @@ import "./carousel.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import img1 from "../../assets/carousel/image1.webp";
-import img2 from "../../assets/carousel/image2.webp";
-import img3 from "../../assets/carousel/image3.webp";
-import img4 from "../../assets/carousel/image4.webp";
-import img5 from "../../assets/carousel/image5.webp";
-import img6 from "../../assets/carousel/image6.webp";
+import img1 from "../../assets/glimpse/1.jpeg";
+import img2 from "../../assets/glimpse/2.jpeg";
+import img3 from "../../assets/glimpse/3.jpeg";
+import img4 from "../../assets/glimpse/4.jpeg";
+import img5 from "../../assets/glimpse/5.jpeg";
+import img6 from "../../assets/glimpse/6.jpeg";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -146,10 +147,10 @@ const ImageCarousel = () => {
       </div>
 
       {/* ── TITLE ── */}
-      <div className="st-title-block">
-        <p ref={eyebrowRef} className="st-eyebrow">
+      <div className="st-title-block  ">
+        {/* <p ref={eyebrowRef} className="st-eyebrow font-extrabold text-[24px]">
           — MEGALEIO &nbsp;·&nbsp; THROUGH THE YEARS —
-        </p>
+        </p> */}
         <div ref={titleRef} className="st-heading-wrap">
           <h2 className="st-heading">
             <span ref={line1Ref} className="st-heading-line st-line-1">

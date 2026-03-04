@@ -36,8 +36,26 @@ const SpookyContactPoster = () => {
           </h2>
         </div>
 
-        {/* TEAM MEMBERS LIST */}
-        <div className="w-full max-w-xl flex flex-col gap-4 text-base sm:text-lg md:text-xl leading-tight font-semibold mb-12 px-2 sm:px-4 items-center justify-center ">
+        
+        {/* FACULTY COORDINATOR SECTION */}
+        <div className="w-full max-w-xl flex flex-col items-center mb-12 border-t border-red-900/50 pt-8">
+          <h3 className="text-xl md:text-2xl font-bold tracking-widest text-[#ff5733] mb-6 drop-shadow-[0_2px_4px_rgba(255,0,0,0.8)]">
+            FACULTY COORDINATOR -
+          </h3>
+          <div className="w-full flex flex-col gap-3 text-lg md:text-xl font-semibold">
+            <div className="flex justify-between items-center w-full px-8 md:px-16">
+              <span className="text-[#ff5733]">Swapnil Malipatil</span>
+              <span className="text-[#ff7a55]">8147334657</span>
+            </div>
+            <div className="flex justify-between items-center w-full px-8 md:px-16">
+              <span className="text-[#ff5733]">Vishakha Rane</span>
+              <span className="text-[#ff7a55]">9730371605</span>
+            </div>
+          </div>
+        </div>
+
+          {/* TEAM MEMBERS LIST */}
+        <div className="w-full max-w-xl flex flex-col gap-4 text-base sm:text-lg md:text-xl leading-tight font-semibold mb-12 px-2 sm:px-4 items-center justify-center mb-12 border-t border-red-900/50 pt-8">
           <TeamRow name="Dev Sarkar" role="President" phone="+917028455752" />
           <TeamRow
             name="Gracy Yadav"
@@ -61,24 +79,6 @@ const SpookyContactPoster = () => {
           />
           <TeamRow name="Harshita Gharat" role="Advisor" phone="919867707542" />
         </div>
-
-        {/* FACULTY COORDINATOR SECTION */}
-        <div className="w-full max-w-xl flex flex-col items-center mb-12 border-t border-red-900/50 pt-8">
-          <h3 className="text-xl md:text-2xl font-bold tracking-widest text-[#ff5733] mb-6 drop-shadow-[0_2px_4px_rgba(255,0,0,0.8)]">
-            FACULTY COORDINATOR -
-          </h3>
-          <div className="w-full flex flex-col gap-3 text-lg md:text-xl font-semibold">
-            <div className="flex justify-between items-center w-full px-8 md:px-16">
-              <span className="text-[#ff5733]">Swapnil Malipatil</span>
-              <span className="text-[#ff7a55]">8147334657</span>
-            </div>
-            <div className="flex justify-between items-center w-full px-8 md:px-16">
-              <span className="text-[#ff5733]">Vishakha Rane</span>
-              <span className="text-[#ff7a55]">9730371605</span>
-            </div>
-          </div>
-        </div>
-
         {/* MAP & ADDRESS SECTION */}
         <div className="w-full max-w-2xl relative bg-[#31221a] p-2 rounded-sm shadow-[0_0_30px_rgba(0,0,0,0.8)] border-2 border-[#543021] mb-8">
           {/* MAP IMAGE PLACEHOLDER */}

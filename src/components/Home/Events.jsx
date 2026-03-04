@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "@studio-freight/lenis";
 import { eventImages } from "../../data/EventImages";
 import { useNavigate } from "react-router-dom";
 import { useReveal } from "../../hook/reveal";
@@ -14,23 +13,6 @@ export default function EventsGallery() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // ✅ LENIS (only if not global)
-    const lenis = new Lenis({
-      duration: 1.2,
-      smooth: true,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    lenis.on("scroll", ScrollTrigger.update);
-
-    // ==============================
-    // GSAP PIN + PARALLAX
-    // ==============================
     const ctx = gsap.context(() => {
       const section = sectionRef.current;
 
@@ -71,10 +53,7 @@ export default function EventsGallery() {
       });
     }, sectionRef);
 
-    return () => {
-      lenis.destroy();
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   const columns = 4;
@@ -95,7 +74,7 @@ export default function EventsGallery() {
     splitImages.push(columnImages);
   }
 
-  useReveal(".reveal")
+  useReveal(".reveal");
 
   return (
     <section ref={sectionRef} className="py-32 bg-black">
@@ -115,7 +94,7 @@ export default function EventsGallery() {
                     <img
                       src={img}
                       alt=""
-                      className="w-full h-[250px] object-cover transition-transform duration-500 hover:scale-105"
+                      className="w-full h-[220px] md:h-[280px] lg:h-[320px] object-cover transition-transform duration-500 hover:scale-105"
                     />
                   </div>
                 ))}
@@ -131,9 +110,17 @@ export default function EventsGallery() {
 
             <button
               onClick={() => navigate("/event")}
-              className="group relative mt-8 bg-red-600 text-white px-8 py-4 rounded-xl pointer-events-auto hover:shadow-[0_0_30px_rgba(255,0,0,0.6)] transition-all"
+              className="group relative mt-8 bg-red-600 text-white px-8 py-4 rounded-xl pointer-events-auto transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(255,0,0,0.3)]"
             >
-              View All Events →
+              <span className="relative z-10 font-medium tracking-wide">
+                View All Events
+              </span>
+
+              <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+
+              <span className="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </button>
           </div>
         </div>
