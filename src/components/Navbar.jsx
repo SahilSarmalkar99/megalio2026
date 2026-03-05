@@ -2,7 +2,7 @@
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
-import logo from "../assets/images/logo.webp";
+import logo from "../assets/images/logo.png";
 import title from "../assets/img1.png";
 import { NavLink, useLocation } from "react-router-dom";
 

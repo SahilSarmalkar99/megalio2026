@@ -1,6 +1,6 @@
 import React from "react";
 import { FaInstagram, FaYoutube, FaFacebookF } from "react-icons/fa";
-import logo from "../assets/images/logo.webp"; // Import the logo
+import logo from "../assets/images/logo.png"; // Import the logo
 import "./Footer.css"; // Import the CSS file for styling
 
 const Footer = () => {
@@ -25,9 +25,9 @@ const Footer = () => {
             <p>☎️ Mr. Swapnil Malipatil: +91 81473 34657</p>
             <p>☎️ Mrs. Vishakha Rane: +91 97303 71605</p>
             <h4>Student Coordinators:</h4>
-            <p>☎️ Mr. Devang Vartak: +91 80801 79406</p>
-            <p>☎️ Mr. Omkar Shinde: +91 99752 29442</p>
+            <p>☎️ Mr. Dev sarkar : +91 70284 55752</p>
             <p>☎️ Ms. Gracy Yadav: +91 87678 20269</p>
+            <p>☎️ Mr. Meghana kamath: +91 91683 97791</p>
           </div>
         </div>
 

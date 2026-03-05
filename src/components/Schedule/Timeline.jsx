@@ -8,7 +8,7 @@ import stormVideo from "../../assets/vecteezy_storm-during-night-in-the-forest_1
 import fogVideo from "../../assets/vecteezy_dark-forest-and-castle-in-misty-foggy-day_1627233.mov";
 
 /* ── Images ───────────────────────────────────────────────── */
-import logo from "../../assets/images/logo.webp";
+import logo from "../../assets/images/logo.png";
 import titleImg from "../../assets/img1.png";
 import darkForest from "../../assets/Dark forest with subtle red fog.jpg";
 import emptyStreet from "../../assets/empty-street-at-night-with-red-lights.jpg";
